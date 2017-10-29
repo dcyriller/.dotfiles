@@ -10,7 +10,7 @@ Run `cp gitconfig ~/.gitconfig` to create a local copy git config.
 
 Install RCM from https://github.com/thoughtbot/rcm
 
-Use it co symlink dotfiles from ~/.dotfiles to ~/.
+Use it to symlink dotfiles from ~/.dotfiles to ~/.
 
 `lsrc` will do a dry-run
 
