@@ -1,0 +1,7 @@
+# enable LESS compiler and syntax highlighting for less
+# https://plus.google.com/u/0/111583136332687352922/posts/7N3FYhUkyVi
+# to do : use on OSX /usr/local/bin/source-highlight
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESS=' -R '
+
+export PYENV_ROOT="$HOME/.pyenv"

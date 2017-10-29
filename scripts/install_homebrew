@@ -1,0 +1,102 @@
+#!/bin/sh
+
+# Thoughbot's laptop script, a bit ligthened.
+
+fancy_echo() {
+  local fmt="$1"; shift
+
+  # shellcheck disable=SC2059
+  printf "\n$fmt\n" "$@"
+}
+
+# shellcheck disable=SC2154
+trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
+
+set -e
+
+HOMEBREW_PREFIX="/usr/local"
+
+if [ -d "$HOMEBREW_PREFIX" ]; then
+  if ! [ -r "$HOMEBREW_PREFIX" ]; then
+    sudo chown -R "$LOGNAME:admin" /usr/local
+  fi
+else
+  sudo mkdir "$HOMEBREW_PREFIX"
+  sudo chflags norestricted "$HOMEBREW_PREFIX"
+  sudo chown -R "$LOGNAME:admin" "$HOMEBREW_PREFIX"
+fi
+
+if ! command -v brew >/dev/null; then
+  fancy_echo "Installing Homebrew ..."
+    curl -fsS \
+      'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
+fi
+
+if brew list | grep -Fq brew-cask; then
+  fancy_echo "Uninstalling old Homebrew-Cask ..."
+  brew uninstall --force brew-cask
+fi
+
+fancy_echo "Updating Homebrew formulae ..."
+brew update
+brew bundle --file=- <<EOF
+tap "thoughtbot/formulae"
+tap "homebrew/services"
+tap "caskroom/cask"
+tap "caskroom/fonts"
+tap "neovim/neovim"
+
+# Programming languages and runtimes
+brew "node"
+brew "ruby"
+brew "python3"
+brew "erlang"
+brew "elixir"
+
+# Unix
+brew "ctags"
+brew "git"
+brew "neovim"
+brew "openssl"
+brew "rcm"
+brew "reattach-to-user-namespace"
+brew "the_silver_searcher"
+brew "tmux"
+brew "vim"
+brew "zsh"
+
+# Unix
+brew "coreutils"
+brew "findutils"
+brew "gnu-tar"
+brew "gnu-sed"
+brew "gawk"
+brew "gnutls"
+brew "gnu-indent"
+brew "gnu-getopt"
+brew "htop"
+
+# env and package managers
+brew "libyaml" # should come after openssl
+brew "rbenv"
+brew "ruby-build"
+brew "yarn"
+
+# Heroku
+brew "heroku-toolbelt"
+brew "parity"
+
+# Image manipulation
+brew "imagemagick"
+brew "exiftool"
+
+# Databases
+brew "postgres"
+brew "mysql"
+brew "redis"
+
+# Other
+brew "autojump"
+brew "awscli"
+brew "exercism"
+EOF
