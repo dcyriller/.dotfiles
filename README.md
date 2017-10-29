@@ -3,6 +3,8 @@
 Clone dotfiles from github:
 `git clone git@github.com:dcyriller/.dotfiles.git ~/.dotfiles`
 
+Run `cp gitconfig ~/.gitconfig` to create a local copy git config.
+
 
 # Use RCM
 
@@ -13,6 +15,8 @@ Use it co symlink dotfiles from ~/.dotfiles to ~/.
 `lsrc` will do a dry-run
 
 `rcup -v -x README.md` will create the symlinks (verbose mode, excluding README).
+
+It symlinks zsh and shell config. Plus vim.
 
 
 # Scripts
