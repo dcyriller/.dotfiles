@@ -8,6 +8,7 @@ if has("nvim")
 else
   set rtp+=~/.vim/bundle/Vundle.vim
   call vundle#begin()
+  set undodir=~/.local/share/vim/undo
 endif
 
 " let Vundle manage Vundle, required
@@ -17,7 +18,7 @@ Plugin 'jiangmiao/auto-pairs'
 " Versatile file navigation
 Plugin 'ctrlpvim/ctrlp.vim'
 " Syntax checking
-Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 " Status line
 Plugin 'bling/vim-airline'
 " Tmux-like status bar
@@ -59,9 +60,9 @@ Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'"
 " Autocompletion
-Plugin 'Valloric/YouCompleteMe'
-" Plugin for ternjs server (js autocompletion)
-Plugin 'marijnh/tern_for_vim'
+Plugin 'roxma/nvim-completion-manager'
+Plugin 'roxma/nvim-cm-tern'
+Plugin 'othree/csscomplete.vim'
 " Elixir plugin
 Plugin 'elixir-lang/vim-elixir'
 " Elixir tests
@@ -82,7 +83,8 @@ Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'keith/swift.vim'
 " Emblem support
 Plugin 'yalesov/vim-emblem'
-
+Plugin 'leafgarland/typescript-vim'
+Plugin 'terryma/vim-multiple-cursors'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -91,11 +93,14 @@ call vundle#end()
 let mapleader=" "
 let maplocalleader=","
 
+set mouse=a
+
 " Enable filetype to be known by vim and indentations to be set per type in after/ftplugin
 filetype plugin indent on
 " Enable persistent undo
 set undofile
 " Enabable omnifunction
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 set omnifunc=syntaxcomplete#Complete
 " Fill the buffer with keywords in the current file, other buffers, imported files, tags
 set complete=.,w,b,u,t,i,]
@@ -107,9 +112,6 @@ set wildmenu
 set ttyfast
 " Use UTF-8 without BOM
 set encoding=utf-8 nobomb
-" Don’t add empty newlines at the end of files
-set binary
-set noeol
 " Highlight current line
 set cursorline
 " Show “invisible” characters
@@ -215,15 +217,6 @@ if has('vim')
   set term=xterm-256color
 endif
 
-" UltiSnips config
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger = '<C-j>'
-let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-" :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-" let g:UltiSnipsSnippetDirectories=["UltiSnips", "vim-snippets/snippets"]
-
 " Enable line numbers
 set number
 " Allow backspace in insert mode
@@ -232,46 +225,25 @@ set backspace=indent,eol,start
 " present 
 set ignorecase smartcase
 
+" Status Line
+set laststatus=2 " always show statusbar
+
 " Enable line numbers
 " Configure vim-airline
-" Always show status line
-set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-
-" Configure Syntaxic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_css_checkers = ['stylelint']
-let g:syntastic_scss_checkers = ['stylelint']
-let g:syntastic_json_checkers = ['jsonlint']
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_sh_checkers = ['shellcheck']
-let g:syntastic_html_checkers = ['jshint']
-let g:syntastic_erlang_checkers=['syntaxerl']
-let g:syntastic_elixir_checkers=['elixir']
-" This is a security issue
-" https://github.com/scrooloose/syntastic/wiki/%28v3.7.0%29---Elixir%3A---elixir
-let g:syntastic_enable_elixir_checker = 1
-let g:syntastic_swift_checkers = ['swiftpm']
-" location list height
-let g:syntastic_loc_list_height=3
 
 " Enable vim-mustache-handlebars abbrev
 let g:mustache_abbreviations = 1
 
-" Map Ctrl+n to toggle NERDtree
-map <C-n> :NERDTreeToggle<CR>
+" Map leader+m to toggle NERDtree
+map <leader>n :NERDTreeToggle<CR>
 " Map Leader+n to Reveal current file in NERDTree
-nnoremap <leader>n :NERDTreeFind<CR>
+nnoremap <leader>m :NERDTreeFind<CR>
+
+" nvim-completion-manager
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Configure NERDtree to be opened on start if no file is specified
 autocmd StdinReadPre * let s:std_in=1
@@ -306,9 +278,6 @@ autocmd FileType html.handlebars setlocal commentstring={{!--%s--}}
 " Recommended setting for EditorConfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
-" Enable tern keyboard shortcuts
-let g:tern_map_keys=1
-
 " Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -331,10 +300,7 @@ noremap  <Left>  <NOP>
 noremap  <Right> <NOP>
 set backspace=0
 
-" When typing ff in insert mode, switch to normal mode
-imap ff <Esc>
-
-" Map kk, jj, ll, hh to arrow keys in insert mode
+" Map C-l to right arrow keys in insert mode
 imap <C-l> <right>
 
 " ExTest.vim mappings
@@ -342,11 +308,3 @@ map <Leader>et :call RunCurrentTestFile()<CR>
 map <Leader>es :call RunNearestTest()<CR>
 map <Leader>el :call RunLastTest()<CR>
 map <Leader>eta :call RunAllTests()<CR>
-
-" My non-US keyboard makes it hard to type [ and ]
-nmap < [
-nmap > ]
-omap < [
-omap > ]
-xmap < [
-xmap > ]

@@ -60,8 +60,11 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vi'
 else
-  export EDITOR='vim'
+  export EDITOR='nvim'
 fi
+
+# use vi mode (emacs is default)
+set -o vi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -100,7 +103,7 @@ PATH="/opt/bin:$PATH"
 
 PATH="/usr/local/bin:$PATH"
 PATH="$(yarn global bin):$PATH"
-PATH="$HOME/.script:$PATH"
+PATH="$HOME/.scripts:$PATH"
 
 export PATH
 

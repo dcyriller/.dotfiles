@@ -3,8 +3,6 @@
 Clone dotfiles from github:
 `git clone git@github.com:dcyriller/.dotfiles.git ~/.dotfiles`
 
-Run `cp gitconfig ~/.gitconfig` to create a local copy git config.
-
 
 # Use RCM
 
