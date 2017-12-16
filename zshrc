@@ -103,6 +103,7 @@ PATH="/opt/bin:$PATH"
 
 PATH="/usr/local/bin:$PATH"
 PATH="$(yarn global bin):$PATH"
+PATH="$HOME/.bin:$PATH"
 PATH="$HOME/.scripts:$PATH"
 
 export PATH
