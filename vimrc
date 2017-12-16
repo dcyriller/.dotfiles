@@ -85,6 +85,8 @@ Plugin 'keith/swift.vim'
 Plugin 'yalesov/vim-emblem'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'terryma/vim-multiple-cursors'
+" Vim test framework
+Plugin 'junegunn/vader.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
