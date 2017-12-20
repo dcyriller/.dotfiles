@@ -296,10 +296,10 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Don't navigate in file using arrow keys !
-noremap  <Up>    <NOP>
-noremap  <Down>  <NOP>
-noremap  <Left>  <NOP>
-noremap  <Right> <NOP>
+noremap <Up>    <NOP>
+noremap <Down>  <NOP>
+noremap <Left>  <NOP>
+noremap <Right> <NOP>
 set backspace=0
 
 " Map C-l to right arrow keys in insert mode
@@ -310,3 +310,5 @@ map <Leader>et :call RunCurrentTestFile()<CR>
 map <Leader>es :call RunNearestTest()<CR>
 map <Leader>el :call RunLastTest()<CR>
 map <Leader>eta :call RunAllTests()<CR>
+
+map <Leader>l :ALENext<CR>
