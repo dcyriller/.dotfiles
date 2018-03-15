@@ -99,4 +99,5 @@ brew "redis"
 brew "autojump"
 brew "awscli"
 brew "exercism"
+brew "jq"
 EOF
