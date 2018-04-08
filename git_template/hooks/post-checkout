@@ -1,3 +1,10 @@
 #!/bin/sh
-.git/hooks/ctags >/dev/null 2>&1 &
 
+if [ $1 != 0000000000000000000000000000000000000000 ]; then
+  if [ $3 = 1 -a -f package.json ] && command -v yarn >/dev/null &&
+      git diff --name-only master | egrep -q '^package|.lock$'
+  then
+    (unset GIT_DIR; exec yarn)
+    true
+  fi
+fi
