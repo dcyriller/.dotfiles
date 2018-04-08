@@ -1,0 +1,45 @@
+[advice]
+	statusHints = false
+[alias]
+	co = checkout
+	st = status
+	ci = commit -v
+	ca = commit --amend
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	one = show -s --pretty='format:%h (%s)'
+	rlog = !sh -c 'git log --color \"$@\"|fmt -s -w 79|less -FRSX' _
+	summary = log --abbrev-commit --pretty=oneline --author="Cyrille.David" --since=last.mon --reverse
+[branch]
+	autosetuprebase = always
+[credential]
+	helper = osxkeychain
+[core]
+	pager = less -S
+	editor = vim
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	grep = auto
+[github]
+	user = dcyriller
+[init]
+	templatedir = ~/.git_template
+[merge]
+	 tool = vim
+[merge "bundle"]
+	name = bundle
+	driver = bundle
+[merge "railsschema"]
+	name = newer Rails schema version
+	driver = hookup resolve-schema %A %O %B %L
+[merge "yarn"]
+	name = yarn
+	driver = yarn
+[user]
+	name = Cyrille David
+	email = email
+[include]
+	path = .gitconfig.local
