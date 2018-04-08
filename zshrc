@@ -142,3 +142,5 @@ servefiles() {
 
 # Load aliases from a file shared by zsh and bash
 [[ -f ~/.aliases ]] && source ~/.aliases
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

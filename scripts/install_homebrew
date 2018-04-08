@@ -54,6 +54,8 @@ brew "erlang"
 brew "elixir"
 
 # Unix
+brew "bash"
+brew "zsh"
 brew "ctags"
 brew "git"
 brew "neovim"
