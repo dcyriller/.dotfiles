@@ -1,95 +1,28 @@
-filetype off " required
+" Enable filetype to be known by vim and indentations to be set per type in after/ftplugin
+filetype plugin indent on
 
-" set the runtime path to include Vundle and initialize
-if has("nvim")
-  set rtp+=~/.config/nvim/bundle/Vundle.vim
-  " alternatively, pass a path where Vundle should install plugins
-  call vundle#begin('~/.config/nvim/bundle')
-else
-  set rtp+=~/.vim/bundle/Vundle.vim
-  call vundle#begin()
-  set undodir=~/.local/share/vim/undo
-endif
+" add fzf support 
+set rtp+=/usr/local/opt/fzf
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-" Auto close brackets, parenthesis etc
-Plugin 'jiangmiao/auto-pairs'
-" Versatile file navigation
-Plugin 'ctrlpvim/ctrlp.vim'
-" Syntax checking
-Plugin 'w0rp/ale'
-" Status line
-Plugin 'bling/vim-airline'
-" Tmux-like status bar
-Plugin 'edkolev/tmuxline.vim'
-" Tree view
-Plugin 'scrooloose/nerdtree'
-" Git display
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-" Bundle in vim
-Plugin 'tpope/vim-bundler'
-" Colorize vim
-Plugin 'altercation/vim-colors-solarized'
-" Comment
-Plugin 'tpope/vim-commentary'
-" Easy align
-Plugin 'junegunn/vim-easy-align'
-" Git in vim
-Plugin 'tpope/vim-fugitive'
-" To track typos
-Plugin 'nathanaelkane/vim-indent-guides'
-" Handle mustache
-Plugin 'mustache/vim-mustache-handlebars'
-" Tpope's, again
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-unimpaired'
-" Search and replace words on whole project
-Plugin 'tpope/vim-abolish'
-" Provides with :E and :A commands
-Plugin 'tpope/vim-projectionist'
-" A git indicator in the gutter
-Plugin 'airblade/vim-gitgutter'
-" Snippets
-" Track the engine.
-Plugin 'SirVer/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'"
-" Autocompletion
-Plugin 'roxma/nvim-completion-manager'
-Plugin 'roxma/nvim-cm-tern'
-Plugin 'othree/csscomplete.vim'
-" Elixir plugin
-Plugin 'elixir-lang/vim-elixir'
-" Elixir tests
-Plugin 'moofish32/vim-ex_test'
-" Show colors in css
-Plugin 'ap/vim-css-color'
-" Minimap
-Plugin 'severin-lemaignan/vim-minimap'
-" Better support of javascript
-Plugin 'pangloss/vim-javascript'
-" JSDoc generation
-Plugin 'heavenshell/vim-jsdoc'
-" Support .editorconfig file
-Plugin 'editorconfig/editorconfig-vim'
-" PHP support
-Plugin 'shawncplus/phpcomplete.vim'
-" Swift support
-Plugin 'keith/swift.vim'
-" Emblem support
-Plugin 'yalesov/vim-emblem'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'terryma/vim-multiple-cursors'
-" Vim test framework
-Plugin 'junegunn/vader.vim'
+" Enable persistent undo
+set undodir=~/.local/share/vim/undo
+set undofile
 
-" All of your Plugins must be added before the following line
-call vundle#end()
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-commentary'
+" Plugin 'tpope/vim-surround'
+" Plugin 'tpope/vim-repeat'
+" Plugin 'tpope/vim-unimpaired'
+" Plugin 'tpope/vim-abolish'
+" Plugin 'tpope/vim-projectionist'
+" Plugin 'tpope/vim-bundler'
+" Plugin 'tpope/vim-rails'
+" Plugin 'tpope/vim-rake'
+
+" Plugin 'junegunn/limelight.vim'
+" Plugin 'junegunn/goyo.vim'
+" Plugin 'junegunn/vim-peekaboo'
+" Plugin 'junegunn/gv.vim'
 
 " Leader and localleader (per file type)
 let mapleader=" "
@@ -97,10 +30,6 @@ let maplocalleader=","
 
 set mouse=a
 
-" Enable filetype to be known by vim and indentations to be set per type in after/ftplugin
-filetype plugin indent on
-" Enable persistent undo
-set undofile
 " Enabable omnifunction
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 set omnifunc=syntaxcomplete#Complete
@@ -208,16 +137,16 @@ nnoremap <Leader>r :RunInInteractiveShell<space>
 set diffopt+=vertical
 " End of Thoughtbot additions
 
-" Enable Solarized colorscheme
+" Enable solarized colorscheme
+" let g:solarized_termcolors=256
+" let g:solarized_termtrans=1
+" set background=dark
+" colorscheme solarized
+
+" Enable seoul256 colorscheme
 syntax enable
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-set background=dark
-colorscheme solarized
-" Fix a bug in tmux : colorscheme not working
-if has('vim')
-  set term=xterm-256color
-endif
+let g:seoul256_background = 233
+colo seoul256
 
 " Enable line numbers
 set number
