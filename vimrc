@@ -1,12 +1,93 @@
-" Enable filetype to be known by vim and indentations to be set per type in after/ftplugin
-filetype plugin indent on
+" ~/.vimrc
 
-" add fzf support 
-set rtp+=/usr/local/opt/fzf
+" Vim 8 defaults
+unlet! skip_defaults_vim
+silent! source $VIMRUNTIME/defaults.vim
 
-" Enable persistent undo
-set undodir=~/.local/share/vim/undo
-set undofile
+let s:darwin = has('mac')
+
+" Leader and localleader (per file type)
+let mapleader=" "
+let maplocalleader=","
+
+" Section: Options {{{1
+" ---------------------
+
+" " Indentation without tabs
+" set expandtab
+" set shiftwidth=2
+" set softtabstop=2
+
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+set autoindent smartindent
+set autoread
+set autowrite " Automatically save before commands like :next and :make
+set backspace=0 " Disable backspace in insert mode
+set clipboard=unnamed " Use the default OS clipboard 
+set cmdheight=2 " Screen lines used for command line
+set colorcolumn=+1
+ " Fill the buffer with keywords in
+ " the current file, other buffers, imported files, tags
+set complete=.,w,b,u,t,i,]
+set cursorline " Highlight current line
+set dictionary+=/usr/share/dict/words
+set diffopt+=vertical " Always use vertical diffs
+set encoding=utf-8 nobomb " Use UTF-8 without BOM
+ " Ignore case when searching for a pattern
+ " but not if one (or more) cap letter is present
+set ignorecase smartcase
+set incsearch " Incremental search
+set laststatus=2 " Always show statusbar
+set nobackup nowritebackup " Remove backup option
+set nojoinspaces
+set noswapfile "http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set number
+set numberwidth=5
+set lazyredraw " Do not repaint while executing macros, etc
+set linebreak " Visually break lines without inserting EOL
+set list lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_ " Show “invisible” characters
+
+if (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
+  let &listchars = "tab:\u21e5\u00b7,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
+  let &fillchars = "vert:\u259a,fold:\u00b7"
+else
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<
+endif
+
+set relativenumber " Show in column relative number of line
+set scrolloff=2
+set shiftround
+set showcmd
+set showmatch
+
+" if exists("+spelllang")
+"   set spelllang=en_us,fr
+" endif
+
+" set spellfile=~/.vim/spell/{en,fr}.utf-8.add
+set textwidth=80 " Make it obvious where 80 characters is
+set timeoutlen=1200 " A little bit more time for macros
+set title " Show the filename in the window titlebar
+set ttimeoutlen=50  " Make Esc work faster
+set ttyfast " Optimize for fast terminal connections
+
+if exists('+undofile')
+  set undodir=~/.local/share/vim/undo
+  set undofile " Enable persistent undo
+endif
+
+set wildmenu
+set wildmode=longest:full,full
+set wildignore+=tags,.*.un~,*.pyc
+
+" Plugin Settings {{{2
+
+set rtp+=/usr/local/opt/fzf " add fzf support
+
 
 " Plugin 'tpope/vim-fugitive'
 " Plugin 'tpope/vim-commentary'
@@ -24,73 +105,13 @@ set undofile
 " Plugin 'junegunn/vim-peekaboo'
 " Plugin 'junegunn/gv.vim'
 
-" Leader and localleader (per file type)
-let mapleader=" "
-let maplocalleader=","
-
-set mouse=a
 
 " Enabable omnifunction
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 set omnifunc=syntaxcomplete#Complete
-" Fill the buffer with keywords in the current file, other buffers, imported files, tags
-set complete=.,w,b,u,t,i,]
-" Use the OS clipboard by default (on versions compiled with `+clipboard`)
-set clipboard=unnamed
-" Enhance command-line completion
-set wildmenu
-" Optimize for fast terminal connections
-set ttyfast
-" Use UTF-8 without BOM
-set encoding=utf-8 nobomb
-" Highlight current line
-set cursorline
-" Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
-
-" Indentation without tabs
-set expandtab
-set shiftwidth=2
-set softtabstop=2
-
-" Show the filename in the window titlebar
-set title
-" Show in column relative number of line
-set relativenumber
-" Show the (partial) command as it’s being typed
-set showcmd
-
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
-
-" Remove backup option
-set nobackup
-set nowritebackup
-set noswapfile "http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
 
 " Thoughtbot additions
-set history=50
-set showcmd " display incomplete commands
-set autowrite " Automatically :write before running commands
 
-augroup vimrcEx
-  autocmd!
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it for commit messages, when the position is invalid, or when
-  " inside an event handler (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
-augroup END
-
-" Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
-
-" Hightlight searches
-set hlsearch
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   " Use Ag over Grep
@@ -109,16 +130,7 @@ if executable('ag')
   endif
 endif
 
-" Use one space, not two, after punctuation.
-set nojoinspaces
 
-" Make it obvious where 80 characters is
-set textwidth=80
-set colorcolumn=+1
-
-" Numbers
-set number
-set numberwidth=5
 
 " use ctrl + c to copy to system clipboard
 vnoremap <C-c> "+y
@@ -132,9 +144,6 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 nnoremap <Leader>r :RunInInteractiveShell<space>
 " Treat <li> and <p> tags like the block tags they are
 " let g:html_indent_tags = 'li\|p'
-
-" Always use vertical diffs
-set diffopt+=vertical
 " End of Thoughtbot additions
 
 " Enable solarized colorscheme
@@ -147,19 +156,8 @@ set diffopt+=vertical
 syntax enable
 let g:seoul256_background = 233
 colo seoul256
+"
 
-" Enable line numbers
-set number
-" Allow backspace in insert mode
-set backspace=indent,eol,start
-" Ignore case when searching for a pattern, but if one (or more) cap letter is
-" present 
-set ignorecase smartcase
-
-" Status Line
-set laststatus=2 " always show statusbar
-
-" Enable line numbers
 " Configure vim-airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -229,7 +227,6 @@ noremap <Up>    <NOP>
 noremap <Down>  <NOP>
 noremap <Left>  <NOP>
 noremap <Right> <NOP>
-set backspace=0
 
 " Map C-l to right arrow keys in insert mode
 imap <C-l> <right>
