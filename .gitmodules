@@ -100,3 +100,57 @@
 [submodule "vim/pack/common/start/vim-rake"]
 	path = vim/pack/common/start/vim-rake
 	url = https://github.com/tpope/vim-rake
+[submodule "vim/pack/common/start/limelight.vim"]
+	path = vim/pack/common/start/limelight.vim
+	url = https://github.com/junegunn/limelight.vim.git
+[submodule "vim/pack/common/start/goyo.vim"]
+	path = vim/pack/common/start/goyo.vim
+	url = https://github.com/junegunn/goyo.vim
+[submodule "vim/pack/common/start/vim-peekaboo"]
+	path = vim/pack/common/start/vim-peekaboo
+	url = https://github.com/junegunn/vim-peekaboo
+[submodule "vim/pack/common/start/gv.vim"]
+	path = vim/pack/common/start/gv.vim
+	url = https://github.com/junegunn/gv.vim
+[submodule "vim/pack/common/start/vim-emoji"]
+	path = vim/pack/common/start/vim-emoji
+	url = https://github.com/junegunn/vim-emoji
+[submodule "vim/pack/common/start/undotree"]
+	path = vim/pack/common/start/undotree
+	url = https://github.com/mbbill/undotree
+[submodule "vim/pack/common/start/ReplaceWithRegister"]
+	path = vim/pack/common/start/ReplaceWithRegister
+	url = https://github.com/vim-scripts/ReplaceWithRegister
+[submodule "vim/pack/common/start/vim-github-dashboard"]
+	path = vim/pack/common/start/vim-github-dashboard
+	url = https://github.com/junegunn/vim-github-dashboard
+[submodule "vim/pack/common/start/splitjoin.vim"]
+	path = vim/pack/common/start/splitjoin.vim
+	url = https://github.com/AndrewRadev/splitjoin.vim
+[submodule "vim/pack/common/start/tagbar"]
+	path = vim/pack/common/start/tagbar
+	url = https://github.com/majutsushi/tagbar
+[submodule "vim/pack/common/start/vim-gtfo"]
+	path = vim/pack/common/start/vim-gtfo
+	url = https://github.com/justinmk/vim-gtfo
+[submodule "vim/pack/common/start/vim-rhubarb"]
+	path = vim/pack/common/start/vim-rhubarb
+	url = https://github.com/tpope/vim-rhubarb
+[submodule "vim/pack/common/start/fugitive-gitlab.vim"]
+	path = vim/pack/common/start/fugitive-gitlab.vim
+	url = https://github.com/shumphrey/fugitive-gitlab.vim
+[submodule "vim/pack/common/start/vim-go"]
+	path = vim/pack/common/start/vim-go
+	url = https://github.com/fatih/vim-go
+[submodule "vim/pack/common/start/rust.vim"]
+	path = vim/pack/common/start/rust.vim
+	url = https://github.com/rust-lang/rust.vim
+[submodule "vim/pack/common/start/dockerfile.vim"]
+	path = vim/pack/common/start/dockerfile.vim
+	url = https://github.com/honza/dockerfile.vim
+[submodule "vim/pack/common/start/unicode.vim"]
+	path = vim/pack/common/start/unicode.vim
+	url = https://github.com/chrisbra/unicode.vim
+[submodule "vim/pack/common/start/vim-speeddating"]
+	path = vim/pack/common/start/vim-speeddating
+	url = https://github.com/tpope/vim-speeddating

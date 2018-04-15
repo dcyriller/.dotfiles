@@ -13,16 +13,6 @@ let maplocalleader=","
 " Section: Options {{{1
 " ---------------------
 
-" " Indentation without tabs
-" set expandtab
-" set shiftwidth=2
-" set softtabstop=2
-
-
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
-
 set autoindent smartindent
 set autoread
 set autowrite " Automatically save before commands like :next and :make
@@ -37,6 +27,7 @@ set cursorline " Highlight current line
 set dictionary+=/usr/share/dict/words
 set diffopt+=vertical " Always use vertical diffs
 set encoding=utf-8 nobomb " Use UTF-8 without BOM
+set hlsearch
  " Ignore case when searching for a pattern
  " but not if one (or more) cap letter is present
 set ignorecase smartcase
@@ -69,6 +60,8 @@ set showmatch
 " endif
 
 " set spellfile=~/.vim/spell/{en,fr}.utf-8.add
+set splitbelow " Open new split panes to right
+set splitright " and bottom, which feels more natural
 set textwidth=80 " Make it obvious where 80 characters is
 set timeoutlen=1200 " A little bit more time for macros
 set title " Show the filename in the window titlebar
@@ -84,27 +77,17 @@ set wildmenu
 set wildmode=longest:full,full
 set wildignore+=tags,.*.un~,*.pyc
 
-" Plugin Settings {{{2
+" }}}1
+" Section: Plugin Settings {{{2
+" -----------------------
+
+let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+let g:gitgutter_sign_modified_removed = emoji#for('collision')
+set completefunc=emoji#complete
 
 set rtp+=/usr/local/opt/fzf " add fzf support
-
-
-" Plugin 'tpope/vim-fugitive'
-" Plugin 'tpope/vim-commentary'
-" Plugin 'tpope/vim-surround'
-" Plugin 'tpope/vim-repeat'
-" Plugin 'tpope/vim-unimpaired'
-" Plugin 'tpope/vim-abolish'
-" Plugin 'tpope/vim-projectionist'
-" Plugin 'tpope/vim-bundler'
-" Plugin 'tpope/vim-rails'
-" Plugin 'tpope/vim-rake'
-
-" Plugin 'junegunn/limelight.vim'
-" Plugin 'junegunn/goyo.vim'
-" Plugin 'junegunn/vim-peekaboo'
-" Plugin 'junegunn/gv.vim'
-
 
 " Enabable omnifunction
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
@@ -117,20 +100,11 @@ if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command=['ag -Q -l --nocolor --hidden -g "" %s']
-  let g:ctrlp_user_command += ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-
   if !exists(":Ag")
     command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
     nnoremap \ :Ag<SPACE>
   endif
 endif
-
-
 
 " use ctrl + c to copy to system clipboard
 vnoremap <C-c> "+y
@@ -169,10 +143,6 @@ let g:mustache_abbreviations = 1
 map <leader>n :NERDTreeToggle<CR>
 " Map Leader+n to Reveal current file in NERDTree
 nnoremap <leader>m :NERDTreeFind<CR>
-
-" nvim-completion-manager
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Configure NERDtree to be opened on start if no file is specified
 autocmd StdinReadPre * let s:std_in=1
