@@ -102,4 +102,5 @@ brew "autojump"
 brew "awscli"
 brew "exercism"
 brew "jq"
+brew "fzf"
 EOF
