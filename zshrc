@@ -144,3 +144,6 @@ servefiles() {
 [[ -f ~/.aliases ]] && source ~/.aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Disable flow control to be able to use <C-s> and <C-q> in vim
+stty -ixon

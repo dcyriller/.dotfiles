@@ -1,22 +1,27 @@
 " ~/.vimrc
 
-" Vim 8 defaults
+" Load Vim 8 defaults
 unlet! skip_defaults_vim
 silent! source $VIMRUNTIME/defaults.vim
+
+" Section: Options {{{1
+" ---------------------
 
 let s:darwin = has('mac')
 
 " Leader and localleader (per file type)
-let mapleader=" "
-let maplocalleader=","
-
-" Section: Options {{{1
-" ---------------------
+let mapleader = " "
+let maplocalleader = ","
 
 set autoindent smartindent
 set autoread
 set autowrite " Automatically save before commands like :next and :make
 set backspace=0 " Disable backspace in insert mode
+if has('patch-7.4.338')
+  let &showbreak = '↳ '
+  set breakindent
+  set breakindentopt=sbr
+endif
 set clipboard=unnamed " Use the default OS clipboard 
 set cmdheight=2 " Screen lines used for command line
 set colorcolumn=+1
@@ -28,37 +33,35 @@ set dictionary+=/usr/share/dict/words
 set diffopt+=vertical " Always use vertical diffs
 set encoding=utf-8 nobomb " Use UTF-8 without BOM
 set hlsearch
+set history=500
  " Ignore case when searching for a pattern
  " but not if one (or more) cap letter is present
 set ignorecase smartcase
 set incsearch " Incremental search
 set laststatus=2 " Always show statusbar
+set fixendofline
 set nobackup nowritebackup " Remove backup option
 set nojoinspaces
-set noswapfile "http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set noswapfile
 set number
 set numberwidth=5
 set lazyredraw " Do not repaint while executing macros, etc
 set linebreak " Visually break lines without inserting EOL
 set list lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_ " Show “invisible” characters
-
 if (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
   let &listchars = "tab:\u21e5\u00b7,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
   let &fillchars = "vert:\u259a,fold:\u00b7"
 else
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<
 endif
-
 set relativenumber " Show in column relative number of line
 set scrolloff=2
 set shiftround
 set showcmd
 set showmatch
-
 " if exists("+spelllang")
 "   set spelllang=en_us,fr
 " endif
-
 " set spellfile=~/.vim/spell/{en,fr}.utf-8.add
 set splitbelow " Open new split panes to right
 set splitright " and bottom, which feels more natural
@@ -67,12 +70,10 @@ set timeoutlen=1200 " A little bit more time for macros
 set title " Show the filename in the window titlebar
 set ttimeoutlen=50  " Make Esc work faster
 set ttyfast " Optimize for fast terminal connections
-
 if exists('+undofile')
   set undodir=~/.local/share/vim/undo
   set undofile " Enable persistent undo
 endif
-
 set wildmenu
 set wildmode=longest:full,full
 set wildignore+=tags,.*.un~,*.pyc
@@ -80,20 +81,22 @@ set wildignore+=tags,.*.un~,*.pyc
 " }}}1
 " Section: Plugin Settings {{{2
 " -----------------------
+let g:deoplete#enable_at_startup = 1
 
-let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
-let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
-let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
-let g:gitgutter_sign_modified_removed = emoji#for('collision')
+" let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+
+" let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+" let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+" let g:gitgutter_sign_modified_removed = emoji#for('collision')
+" call emoji#for('small_blue_diamond')
+
 set completefunc=emoji#complete
 
-set rtp+=/usr/local/opt/fzf " add fzf support
+set runtimepath+=/usr/local/opt/fzf " add fzf support
 
 " Enabable omnifunction
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 set omnifunc=syntaxcomplete#Complete
-
-" Thoughtbot additions
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -102,23 +105,16 @@ if executable('ag')
 
   if !exists(":Ag")
     command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-    nnoremap \ :Ag<SPACE>
   endif
 endif
-
-" use ctrl + c to copy to system clipboard
-vnoremap <C-c> "+y
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 " Search and replace the word under the cursor
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+nnoremap <Leader>sw :%s/\<<C-r><C-w>\>/
 
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>
-" Treat <li> and <p> tags like the block tags they are
-" let g:html_indent_tags = 'li\|p'
-" End of Thoughtbot additions
 
 " Enable solarized colorscheme
 " let g:solarized_termcolors=256
@@ -129,8 +125,7 @@ nnoremap <Leader>r :RunInInteractiveShell<space>
 " Enable seoul256 colorscheme
 syntax enable
 let g:seoul256_background = 233
-colo seoul256
-"
+colorscheme seoul256
 
 " Configure vim-airline
 let g:airline#extensions#tabline#enabled = 1
@@ -139,9 +134,9 @@ let g:airline_powerline_fonts = 1
 " Enable vim-mustache-handlebars abbrev
 let g:mustache_abbreviations = 1
 
-" Map leader+m to toggle NERDtree
+" Map leader+n to toggle NERDtree
 map <leader>n :NERDTreeToggle<CR>
-" Map Leader+n to Reveal current file in NERDTree
+" Map Leader+m to Reveal current file in NERDTree
 nnoremap <leader>m :NERDTreeFind<CR>
 
 " Configure NERDtree to be opened on start if no file is specified
@@ -177,12 +172,6 @@ autocmd FileType html.handlebars setlocal commentstring={{!--%s--}}
 " Recommended setting for EditorConfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
 " Switch buffer to right or left
 nnoremap <C-Left> :sbnext<CR>
 nnoremap <C-Right> :sbprevious<CR>
@@ -192,19 +181,72 @@ vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" Don't navigate in file using arrow keys !
-noremap <Up>    <NOP>
-noremap <Down>  <NOP>
-noremap <Left>  <NOP>
-noremap <Right> <NOP>
-
 " Map C-l to right arrow keys in insert mode
-imap <C-l> <right>
+" TODO: use non recursive variant
+inoremap <C-l> <right>
 
 " ExTest.vim mappings
-map <Leader>et :call RunCurrentTestFile()<CR>
-map <Leader>es :call RunNearestTest()<CR>
-map <Leader>el :call RunLastTest()<CR>
-map <Leader>eta :call RunAllTests()<CR>
+nnoremap <Leader>et :call RunCurrentTestFile()<CR>
+nnoremap <Leader>es :call RunNearestTest()<CR>
+nnoremap <Leader>el :call RunLastTest()<CR>
+nnoremap <Leader>eta :call RunAllTests()<CR>
 
-map <Leader>l :ALENext<CR>
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
+
+" Quickly edit and save vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Move between linting errors
+nnoremap <Leader>ln :ALENextWrap<CR>
+nnoremap <Leader>lp :ALEPreviousWrap<CR>
+nnoremap <leader>fix :ALEFix<CR>
+
+" }}}2
+" Section: Mappings {{{3
+" ----------------------
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" ----------------------------------------------------------------------------
+" Moving lines
+" ----------------------------------------------------------------------------
+if s:darwin
+  nnoremap <silent> Ï :move .+1<CR>==
+  nnoremap <silent> È :move .-2<CR>==
+  inoremap <silent> Ï <Esc>:move .+1<CR>==gi
+  inoremap <silent> È <Esc>:move .-2<CR>==gi
+  vnoremap <silent> Ï :move '>+1<CR>gv=gv
+  vnoremap <silent> È :move '<-2<CR>gv=gv
+else
+  xnoremap <silent> <A-j> :move'>+<cr>gv
+  xnoremap <silent> <A-k> :move-2<cr>gv
+endif
+
+" ----------------------------------------------------------------------------
+" Saving and quitting
+" ----------------------------------------------------------------------------
+" Add `stty -ixon` in your `zshrc` or `bashrc`
+" to disable terminal's flow control
+"
+" If the current buffer has never been saved, it will have no name,
+" call the file browser to save it, otherwise just save it.
+command -nargs=0 -bar Update if &modified 
+                           \|    if empty(bufname('%'))
+                           \|        browse confirm write
+                           \|    else
+                           \|        confirm write
+                           \|    endif
+                           \|endif
+
+nnoremap <silent> <C-s> :<C-u>Update<CR>
+inoremap <C-s> <c-o>:Update<CR>
+vnoremap <C-s> <esc>:Update<CR>gv
+nnoremap <silent> <C-q> :q<CR>
+" }}}3
