@@ -41,6 +41,7 @@ set incsearch " Incremental search
 set laststatus=2 " Always show statusbar
 set fixendofline
 set nobackup nowritebackup " Remove backup option
+set noexpandtab
 set nojoinspaces
 set noswapfile
 set number
@@ -57,6 +58,7 @@ endif
 set relativenumber " Show in column relative number of line
 set scrolloff=2
 set shiftround
+set shiftwidth=2
 set showcmd
 set showmatch
 " if exists("+spelllang")
@@ -65,6 +67,7 @@ set showmatch
 " set spellfile=~/.vim/spell/{en,fr}.utf-8.add
 set splitbelow " Open new split panes to right
 set splitright " and bottom, which feels more natural
+set tabstop=2
 set textwidth=80 " Make it obvious where 80 characters is
 set timeoutlen=1200 " A little bit more time for macros
 set title " Show the filename in the window titlebar
@@ -81,6 +84,19 @@ set wildignore+=tags,.*.un~,*.pyc
 " }}}1
 " Section: Plugin Settings {{{2
 " -----------------------
+
+" ----------------------------------------------------------------------------
+" vim-javascript
+" ----------------------------------------------------------------------------
+let g:javascript_plugin_jsdoc = 1
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+augroup END
+
+" ----------------------------------------------------------------------------
+" deoplete
+" ----------------------------------------------------------------------------
 let g:deoplete#enable_at_startup = 1
 
 " let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
