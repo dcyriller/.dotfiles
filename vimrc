@@ -8,7 +8,7 @@ silent! source $VIMRUNTIME/defaults.vim
 
 " Section: Options {{{1
 " ---------------------
-autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=indent
+" autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=indent
 let s:darwin = has('mac')
 
 " Leader and localleader (per file type)
@@ -29,7 +29,7 @@ set cmdheight=2 " Screen lines used for command line
 set colorcolumn=+1
  " Fill the buffer with keywords in
  " the current file, other buffers, imported files, tags
-set complete=.,w,b,u,t,i,]
+" set complete=.,w,b,u,t,i,]
 set cursorline " Highlight current line
 set dictionary+=/usr/share/dict/words
 set diffopt+=vertical " Always use vertical diffs
@@ -90,14 +90,17 @@ set wildignore+=tags,.*.un~,*.pyc
 " vim-javascript
 " ----------------------------------------------------------------------------
 let g:javascript_plugin_jsdoc = 1
-augroup javascript_folding
-    au!
-    au FileType javascript setlocal foldmethod=syntax
-augroup END
+" augroup javascript_folding
+"     au!
+"     au FileType javascript setlocal foldmethod=syntax
+" augroup END
 
 " ----------------------------------------------------------------------------
 " completor.vim
 " ----------------------------------------------------------------------------
+let g:completor_node_binary = '/usr/local/Cellar/node/7.10.0/bin/node'
+let g:completor_css_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+:\s*[\w-]*)$'
+let g:completor_scss_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+:\s*[\w-]*)$'
 
 " let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
 
@@ -106,13 +109,17 @@ augroup END
 " let g:gitgutter_sign_modified_removed = emoji#for('collision')
 " call emoji#for('small_blue_diamond')
 
-set completefunc=emoji#complete
+" set completefunc=emoji#complete
+
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 set runtimepath+=/usr/local/opt/fzf " add fzf support
 
 " Enabable omnifunction
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
-set omnifunc=syntaxcomplete#Complete
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
+" set omnifunc=syntaxcomplete#Complete
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
