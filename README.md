@@ -30,7 +30,7 @@ These scripts should be sourced in PATH if RCM step was successfull.
 
 # Setup git
 
-Copy `~/.dotfiles/gitconfig` to `~/.gitconfig` and update email.
+Create a `.gitconfig.local` and set your email.
 
 # VIM / NEOVIM
 

@@ -40,6 +40,5 @@
 	driver = yarn
 [user]
 	name = Cyrille David
-	email = email
 [include]
 	path = .gitconfig.local
