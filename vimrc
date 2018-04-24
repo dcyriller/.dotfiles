@@ -1,4 +1,6 @@
 " ~/.vimrc
+set encoding=utf-8 nobomb
+scriptencoding utf-8
 
 " Load Vim 8 defaults
 unlet! skip_defaults_vim
@@ -10,8 +12,8 @@ autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=indent
 let s:darwin = has('mac')
 
 " Leader and localleader (per file type)
-let mapleader = " "
-let maplocalleader = ","
+let mapleader = ' '
+let maplocalleader = ','
 
 set autoindent smartindent
 set autoread
@@ -31,7 +33,6 @@ set complete=.,w,b,u,t,i,]
 set cursorline " Highlight current line
 set dictionary+=/usr/share/dict/words
 set diffopt+=vertical " Always use vertical diffs
-set encoding=utf-8 nobomb " Use UTF-8 without BOM
 set hlsearch
 set history=500
  " Ignore case when searching for a pattern
@@ -118,7 +119,7 @@ if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
 
-  if !exists(":Ag")
+  if !exists(':Ag')
     command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
   endif
 endif
