@@ -157,3 +157,6 @@
 [submodule "completor.vim"]
 	path = completor.vim
 	url = https://github.com/maralla/completor.vim.git
+[submodule "tern_for_vim"]
+	path = tern_for_vim
+	url = https://github.com/ternjs/tern_for_vim.git
