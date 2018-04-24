@@ -154,3 +154,6 @@
 [submodule "vim/pack/common/start/vim-speeddating"]
 	path = vim/pack/common/start/vim-speeddating
 	url = https://github.com/tpope/vim-speeddating
+[submodule "completor.vim"]
+	path = completor.vim
+	url = https://github.com/maralla/completor.vim.git

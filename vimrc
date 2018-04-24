@@ -6,7 +6,7 @@ silent! source $VIMRUNTIME/defaults.vim
 
 " Section: Options {{{1
 " ---------------------
-
+autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=indent
 let s:darwin = has('mac')
 
 " Leader and localleader (per file type)
@@ -95,9 +95,8 @@ augroup javascript_folding
 augroup END
 
 " ----------------------------------------------------------------------------
-" deoplete
+" completor.vim
 " ----------------------------------------------------------------------------
-let g:deoplete#enable_at_startup = 1
 
 " let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
 
