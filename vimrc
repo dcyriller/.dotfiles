@@ -115,6 +115,8 @@ let g:completor_scss_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+:\s*[\w-]*)$'
 " let g:UltiSnipsJumpForwardTrigger="<c-b>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+nnoremap \ :FZF<ENTER>
+
 set runtimepath+=/usr/local/opt/fzf " add fzf support
 
 " Enabable omnifunction
@@ -162,9 +164,6 @@ map <leader>n :NERDTreeToggle<CR>
 " Map Leader+m to Reveal current file in NERDTree
 nnoremap <leader>m :NERDTreeFind<CR>
 
-" Configure NERDtree to be opened on start if no file is specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Close vim if NERDtree is the last opened window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " NERDTress File highlighting
