@@ -16,4 +16,4 @@ fi
 alias path='echo $PATH | tr -s ":" "\n"'
 
 # Fix conflicts with editor
-alias grc='git diff --name-only | uniq | xargs $EDITOR'
+alias grc='vim $(git diff --name-only | uniq)'

@@ -273,4 +273,13 @@ vnoremap <C-s> <esc>:Update<CR>gv
 nnoremap <silent> <C-q> :q<CR>
 
 nnoremap <CR> :nohl<CR>
+
 " }}}3
+" ============================================================================
+" LOCAL VIMRC {{{4
+" ============================================================================
+if filereadable(expand('~/.vimrc.local'))
+  source ~/.vimrc.local
+endif
+
+" }}}4
