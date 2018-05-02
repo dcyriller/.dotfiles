@@ -17,3 +17,5 @@ alias path='echo $PATH | tr -s ":" "\n"'
 
 # Fix conflicts with editor
 alias grc='vim $(git diff --name-only | uniq)'
+
+alias g=git
