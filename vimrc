@@ -68,6 +68,7 @@ set showmatch
 " set spellfile=~/.vim/spell/{en,fr}.utf-8.add
 set splitbelow " Open new split panes to right
 set splitright " and bottom, which feels more natural
+set t_Co=256
 set tabstop=2
 set textwidth=80 " Make it obvious where 80 characters is
 set timeoutlen=1200 " A little bit more time for macros
