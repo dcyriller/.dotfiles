@@ -273,7 +273,7 @@ inoremap <C-s> <c-o>:Update<CR>
 vnoremap <C-s> <esc>:Update<CR>gv
 nnoremap <silent> <C-q> :q<CR>
 
-nnoremap <CR> :nohl<CR>
+nnoremap <silent><CR><CR> :nohl<CR>
 
 " }}}3
 " ============================================================================
