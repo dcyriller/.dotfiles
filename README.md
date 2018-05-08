@@ -12,8 +12,8 @@ Use it to symlink dotfiles from ~/.dotfiles to ~/.
 
 `lsrc` will do a dry-run
 
-`rcup -v -x README.md -x gitconfig` will create the symlinks (verbose mode,
-excluding README and gitconfig).
+`rcup -v -x README.md` will create the symlinks (verbose mode, excluding README
+and gitconfig).
 
 It symlinks zsh and shell config. Plus vim.
 
@@ -31,12 +31,3 @@ These scripts should be sourced in PATH if RCM step was successfull.
 # Setup git
 
 Create a `.gitconfig.local` and set your email.
-
-# VIM / NEOVIM
-
-The config should work on both vim and neovim.
-
-It is configured to use vim-plug.
-It can be installed here https://github.com/junegunn/vim-plug
-
-Then run `:PlugInstall`

@@ -1,4 +1,3 @@
 #!/bin/sh
 
-yarn global remove browser-sync diff-so-fancy ember-cli eslint eslint-plugin-ember-suave jasmine-node tldr stylelint stylelint-config-standard babel-eslint typescript tslint
-yarn global add browser-sync diff-so-fancy ember-cli eslint eslint-plugin-ember-suave jasmine-node tldr stylelint stylelint-config-standard babel-eslint typescript tslint
+yarn global add browser-sync ember-cli eslint eslint-plugin-ember-suave jasmine-node stylelint stylelint-config-standard babel-eslint typescript tslint
