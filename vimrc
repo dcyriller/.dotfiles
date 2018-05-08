@@ -214,6 +214,10 @@ nnoremap <Leader>es :call RunNearestTest()<CR>
 nnoremap <Leader>el :call RunLastTest()<CR>
 nnoremap <Leader>eta :call RunAllTests()<CR>
 
+" Use quickfix not to conflict with GV
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \}
