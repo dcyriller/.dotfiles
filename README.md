@@ -18,6 +18,18 @@ and gitconfig).
 It symlinks zsh and shell config. Plus vim.
 
 
+# VIM
+
+Setup tern:
+`cd ~/.vim/pack/common/start/tern_for_vim`
+`npm install`
+
+Setup YouCompleteMe:
+`yarn global add typescript`
+`cd ~/.vim/pack/common/start/YouCompleteMe`
+`./install.py --clang-completer --rust-completer --js-completer --go-completer`
+
+
 # Scripts
 
 The scripts directory contains some installation scripts.

@@ -163,3 +163,6 @@
 [submodule "vim/pack/common/start/vim-css-color"]
 	path = vim/pack/common/start/vim-css-color
 	url = https://github.com/ap/vim-css-color.git
+[submodule "vim/pack/common/start/YouCompleteMe"]
+	path = vim/pack/common/start/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
