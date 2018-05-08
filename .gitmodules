@@ -28,9 +28,6 @@
 [submodule "vim/pack/common/start/editorconfig-vim"]
 	path = vim/pack/common/start/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim.git
-[submodule "vim/pack/common/start/vim-css-color"]
-	path = vim/pack/common/start/vim-css-color
-	url = https://github.com/ap/vim-css-color.git
 [submodule "vim/pack/common/start/vim-multiple-cursors"]
 	path = vim/pack/common/start/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors.git
@@ -60,7 +57,7 @@
 	url = https://github.com/yalesov/vim-emblem.git
 [submodule "vim/pack/common/start/typescript-vim"]
 	path = vim/pack/common/start/typescript-vim
-	url = https://github.com/leafgarland/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
 [submodule "vim/pack/common/start/vader.vim"]
 	path = vim/pack/common/start/vader.vim
 	url = https://github.com/junegunn/vader.vim.git
@@ -160,3 +157,9 @@
 [submodule "tern_for_vim"]
 	path = vim/pack/common/start/tern_for_vim
 	url = https://github.com/ternjs/tern_for_vim.git
+[submodule "vim/pack/common/start/tern_for_vim"]
+	path = vim/pack/common/start/tern_for_vim
+	url = https://github.com/ternjs/tern_for_vim.git
+[submodule "vim/pack/common/start/vim-css-color"]
+	path = vim/pack/common/start/vim-css-color
+	url = https://github.com/ap/vim-css-color.git
