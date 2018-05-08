@@ -97,11 +97,21 @@ let g:javascript_plugin_jsdoc = 1
 " augroup END
 
 " ----------------------------------------------------------------------------
-" completor.vim
+" UltiSnips
 " ----------------------------------------------------------------------------
-let g:completor_node_binary = '/usr/local/Cellar/node/7.10.0/bin/node'
-let g:completor_css_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+:\s*[\w-]*)$'
-let g:completor_scss_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+:\s*[\w-]*)$'
+" Let :UltiSnipsEdit split the window.
+let g:UltiSnipsEditSplit='vertical'
+
+autocmd FileType javascript UltiSnipsAddFiletypes javascript-ember
+autocmd FileType javascript UltiSnipsAddFiletypes javascript-jsdoc
+
+" ----------------------------------------------------------------------------
+" YouCompleteMe
+" ----------------------------------------------------------------------------
+" Do not let YCM use tab (instead leave it free for UltiSnips)
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+
 
 " let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
 
