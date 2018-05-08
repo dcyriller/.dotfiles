@@ -102,7 +102,6 @@ let g:javascript_plugin_jsdoc = 1
 " Let :UltiSnipsEdit split the window.
 let g:UltiSnipsEditSplit='vertical'
 
-autocmd FileType javascript UltiSnipsAddFiletypes javascript-ember
 autocmd FileType javascript UltiSnipsAddFiletypes javascript-jsdoc
 
 " ----------------------------------------------------------------------------
@@ -298,3 +297,10 @@ if filereadable(expand('~/.vimrc.local'))
 endif
 
 " }}}4
+
+" Load all plugins now.
+" Plugins need to be added to runtimepath before helptags can be generated.
+packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL
