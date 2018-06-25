@@ -147,3 +147,5 @@ servefiles() {
 
 # Disable flow control to be able to use <C-s> and <C-q> in vim
 stty -ixon
+export PATH="/usr/local/opt/php@5.6/bin:$PATH"
+export PATH="/usr/local/opt/php@5.6/sbin:$PATH"
