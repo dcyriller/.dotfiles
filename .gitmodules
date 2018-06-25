@@ -172,3 +172,6 @@
 [submodule "vim/pack/common/start/vim-ember-imports"]
 	path = vim/pack/common/start/vim-ember-imports
 	url = git@github.com:sukima/vim-ember-imports.git
+[submodule "vim/pack/common/start/vim-prettier"]
+	path = vim/pack/common/start/vim-prettier
+	url = git@github.com:prettier/vim-prettier.git
