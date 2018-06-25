@@ -166,3 +166,9 @@
 [submodule "vim/pack/common/start/YouCompleteMe"]
 	path = vim/pack/common/start/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "vim-ember-imports"]
+	path = vim/pack/common/start/vim-ember-imports
+	url = git@github.com:sukima/vim-ember-imports.git
+[submodule "vim/pack/common/start/vim-ember-imports"]
+	path = vim/pack/common/start/vim-ember-imports
+	url = git@github.com:sukima/vim-ember-imports.git
