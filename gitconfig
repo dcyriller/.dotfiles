@@ -35,10 +35,12 @@
 [merge "railsschema"]
 	name = newer Rails schema version
 	driver = hookup resolve-schema %A %O %B %L
-[merge "yarn"]
-	name = yarn
-	driver = yarn
 [user]
 	name = Cyrille David
 [include]
 	path = .gitconfig.local
+[rerere]
+	enabled = false
+[pager]
+	diff = diff-so-fancy | less --tabs=1,5 -RFX
+	show = diff-so-fancy | less --tabs=1,5 -RFX
