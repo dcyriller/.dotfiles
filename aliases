@@ -10,3 +10,5 @@ alias path='echo $PATH | tr -s ":" "\n"'
 alias grc='vim $(git diff --name-only | uniq)'
 
 alias g=git
+
+alias h="fzf --preview 'bat --color \"always\" {}'"

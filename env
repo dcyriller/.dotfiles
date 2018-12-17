@@ -5,3 +5,5 @@ export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 
 export PYENV_ROOT="$HOME/.pyenv"
+
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
