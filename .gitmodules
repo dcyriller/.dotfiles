@@ -157,9 +157,6 @@
 [submodule "tern_for_vim"]
 	path = vim/pack/common/start/tern_for_vim
 	url = https://github.com/ternjs/tern_for_vim.git
-[submodule "vim/pack/common/start/tern_for_vim"]
-	path = vim/pack/common/start/tern_for_vim
-	url = https://github.com/ternjs/tern_for_vim.git
 [submodule "vim/pack/common/start/vim-css-color"]
 	path = vim/pack/common/start/vim-css-color
 	url = https://github.com/ap/vim-css-color.git

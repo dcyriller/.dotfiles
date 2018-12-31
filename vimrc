@@ -103,6 +103,7 @@ let g:javascript_plugin_jsdoc = 1
 let g:UltiSnipsEditSplit='vertical'
 
 autocmd FileType javascript UltiSnipsAddFiletypes javascript-jsdoc
+autocmd FileType javascript UltiSnipsAddFiletypes javascript-ember
 
 " ----------------------------------------------------------------------------
 " YouCompleteMe
@@ -223,9 +224,7 @@ nnoremap <Leader>es :call RunNearestTest()<CR>
 nnoremap <Leader>el :call RunLastTest()<CR>
 nnoremap <Leader>eta :call RunAllTests()<CR>
 
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\}
+let g:ale_lint_on_text_changed = 'never'
 
 " Quickly edit and save vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
