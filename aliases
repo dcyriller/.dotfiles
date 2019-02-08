@@ -12,3 +12,7 @@ alias grc='vim $(git diff --name-only | uniq)'
 alias g=git
 
 alias h="fzf --preview 'bat --color \"always\" {}'"
+
+function cheat() {
+	curl cht.sh/$1
+}
