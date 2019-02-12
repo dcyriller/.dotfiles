@@ -178,3 +178,6 @@
 [submodule "vim/pack/common/start/ember-vim-snippets"]
 	path = vim/pack/common/start/ember-vim-snippets
 	url = https://github.com/josemarluedke/ember-vim-snippets
+[submodule "vim/pack/common/start/vim-tmux-navigator"]
+	path = vim/pack/common/start/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git

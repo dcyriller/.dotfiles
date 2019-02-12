@@ -1,2 +1,6 @@
+# Use Vi, not Emacs, style editing
 set editing-mode vi
+
+###########################################################
+# Keymaps for when we're in command mode (e.g., after hitting ESC)
 set keymap vi-command
