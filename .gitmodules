@@ -178,3 +178,6 @@
 [submodule "vim/pack/common/start/vim-tmux-navigator"]
 	path = vim/pack/common/start/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule "vim/pack/common/start/vim-table-mode"]
+	path = vim/pack/common/start/vim-table-mode
+	url = git@github.com:dhruvasagar/vim-table-mode.git
