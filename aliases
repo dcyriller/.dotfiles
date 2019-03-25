@@ -1,18 +1,9 @@
-# alias GNU awk to overwrite (if present) old awk
-if command -v gawk >/dev/null; then
-  alias awk=gawk
-fi
-
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
 # Fix conflicts with editor
 alias grc='vim $(git diff --name-only | uniq)'
 
-alias g=git
-
 alias h="fzf --preview 'bat --color \"always\" {}'"
 
-function cheat() {
-	curl cht.sh/$1
-}
+alias g=git

@@ -1,0 +1,5 @@
+# Serve current directory on local network
+servefiles() {
+  python -m http.server 7777
+}
+
