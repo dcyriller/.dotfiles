@@ -1,9 +1,6 @@
 [submodule "vim/pack/common/start/vim-airline"]
 	path = vim/pack/common/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
-[submodule "vim/pack/common/start/ale"]
-	path = vim/pack/common/start/ale
-	url = https://github.com/w0rp/ale.git
 [submodule "vim/pack/common/start/auto-pairs"]
 	path = vim/pack/common/start/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs.git
@@ -25,9 +22,6 @@
 [submodule "vim/pack/common/start/vim-gitgutter"]
 	path = vim/pack/common/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "vim/pack/common/start/editorconfig-vim"]
-	path = vim/pack/common/start/editorconfig-vim
-	url = https://github.com/editorconfig/editorconfig-vim.git
 [submodule "vim/pack/common/start/vim-multiple-cursors"]
 	path = vim/pack/common/start/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors.git
@@ -151,33 +145,21 @@
 [submodule "vim/pack/common/start/vim-speeddating"]
 	path = vim/pack/common/start/vim-speeddating
 	url = https://github.com/tpope/vim-speeddating
-[submodule "completor.vim"]
-	path = vim/pack/common/start/completor.vim
-	url = https://github.com/maralla/completor.vim.git
-[submodule "tern_for_vim"]
-	path = vim/pack/common/start/tern_for_vim
-	url = https://github.com/ternjs/tern_for_vim.git
 [submodule "vim/pack/common/start/vim-css-color"]
 	path = vim/pack/common/start/vim-css-color
 	url = https://github.com/ap/vim-css-color.git
-[submodule "vim-ember-imports"]
-	path = vim/pack/common/start/vim-ember-imports
-	url = git@github.com:sukima/vim-ember-imports.git
-[submodule "vim/pack/common/start/vim-ember-imports"]
-	path = vim/pack/common/start/vim-ember-imports
-	url = git@github.com:sukima/vim-ember-imports.git
-[submodule "vim/pack/common/start/vim-prettier"]
-	path = vim/pack/common/start/vim-prettier
-	url = git@github.com:prettier/vim-prettier.git
-[submodule "vim/pack/common/start/YouCompleteMe"]
-	path = vim/pack/common/start/YouCompleteMe
-	url = https://github.com/Valloric/YouCompleteMe
 [submodule "vim/pack/common/start/ember-vim-snippets"]
 	path = vim/pack/common/start/ember-vim-snippets
 	url = https://github.com/josemarluedke/ember-vim-snippets
+[submodule "vim/pack/common/start/editorconfig-vim"]
+	path = vim/pack/common/start/editorconfig-vim
+	url = git@github.com:editorconfig/editorconfig-vim.git
+[submodule "vim/pack/common/start/ale"]
+	path = vim/pack/common/start/ale
+	url = git@github.com:w0rp/ale.git
+[submodule "vim/pack/common/start/vim-test"]
+	path = vim/pack/common/start/vim-test
+	url = git@github.com:janko/vim-test.git
 [submodule "vim/pack/common/start/vim-tmux-navigator"]
 	path = vim/pack/common/start/vim-tmux-navigator
-	url = https://github.com/christoomey/vim-tmux-navigator.git
-[submodule "vim/pack/common/start/vim-table-mode"]
-	path = vim/pack/common/start/vim-table-mode
-	url = git@github.com:dhruvasagar/vim-table-mode.git
+	url = git@github.com:christoomey/vim-tmux-navigator.git

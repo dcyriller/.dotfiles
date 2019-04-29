@@ -88,9 +88,55 @@ set wildignore+=tags,.*.un~,*.pyc
 " -----------------------
 
 " ----------------------------------------------------------------------------
+" ALE
+" ----------------------------------------------------------------------------
+nnoremap <Leader>ln :ALENextWrap<CR>
+nnoremap <Leader>lp :ALEPreviousWrap<CR>
+nnoremap <leader>lf :ALEFix<CR>
+
+let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
+let g:ale_linters = {'javascript': ['eslint']}
+
+" ----------------------------------------------------------------------------
+" editorconfig-vim
+" ----------------------------------------------------------------------------
+" Recommended setting for EditorConfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" ----------------------------------------------------------------------------
+" nerdtree
+" ----------------------------------------------------------------------------
+" Close vim if NERDtree is the last opened window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+
+" Map leader+n to toggle NERDtree
+map <leader>n :NERDTreeToggle<CR>
+" Map Leader+m to Reveal current file in NERDTree
+nnoremap <leader>m :NERDTreeFind<CR>
+
+" ----------------------------------------------------------------------------
 " vim-javascript
 " ----------------------------------------------------------------------------
 let g:javascript_plugin_jsdoc = 1
+
 " augroup javascript_folding
 "     au!
 "     au FileType javascript setlocal foldmethod=syntax
@@ -106,12 +152,27 @@ autocmd FileType javascript UltiSnipsAddFiletypes javascript-jsdoc
 autocmd FileType javascript UltiSnipsAddFiletypes javascript-ember
 
 " ----------------------------------------------------------------------------
-" YouCompleteMe
+" vim-airline
 " ----------------------------------------------------------------------------
-" Do not let YCM use tab (instead leave it free for UltiSnips)
-let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_key_list_previous_completion = ['<Up>']
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
+" ----------------------------------------------------------------------------
+" vim-easy-align
+" ----------------------------------------------------------------------------
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" ----------------------------------------------------------------------------
+" vim-test
+" ----------------------------------------------------------------------------
+nnoremap <Leader>tn :TestNearest<CR>
+nnoremap <Leader>tf :TestFile<CR>
+nnoremap <Leader>ts :TestSuite<CR>
+nnoremap <Leader>tl :TestLast<CR>
+nnoremap <Leader>tv :TestVisit<CR>
 
 " let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
 
@@ -144,14 +205,6 @@ if executable('ag')
   endif
 endif
 
-" Switch between the last two files
-nnoremap <leader><leader> <c-^>
-" Search and replace the word under the cursor
-nnoremap <Leader>sw :%s/\<<C-r><C-w>\>/
-
-" Run commands that require an interactive shell
-nnoremap <Leader>r :RunInInteractiveShell<space>
-
 " Enable solarized colorscheme
 " let g:solarized_termcolors=256
 " let g:solarized_termtrans=1
@@ -163,81 +216,31 @@ syntax enable
 let g:seoul256_background = 233
 colorscheme seoul256
 
-" Configure vim-airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-
 " Enable vim-mustache-handlebars abbrev
 let g:mustache_abbreviations = 1
-
-" Map leader+n to toggle NERDtree
-map <leader>n :NERDTreeToggle<CR>
-" Map Leader+m to Reveal current file in NERDTree
-nnoremap <leader>m :NERDTreeFind<CR>
-
-" Close vim if NERDtree is the last opened window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" NERDTress File highlighting
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-
-" Configure vim-javascript
-let g:javascript_plugin_jsdoc = 1
 
 " Add comments to vim-handlebars
 autocmd FileType html.handlebars setlocal commentstring={{!--%s--}}
 
-" Recommended setting for EditorConfig
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+" }}}2
+" Section: Mappings {{{3
+" ----------------------
+
+" Switch between the last two files
+nnoremap <leader><leader> <c-^>
+" Search and replace the word under the cursor
+nnoremap <Leader>sw :%s/\<<C-r><C-w>\>/
+
+" Map C-l to right arrow keys in insert mode
+inoremap <C-l> <right>
+
+" Quickly edit and save vimrc
+nnoremap <leader>ve :vsplit $MYVIMRC<cr>
+nnoremap <leader>vs :source $MYVIMRC<cr>
 
 " Switch buffer to right or left
 nnoremap <C-Left> :sbnext<CR>
 nnoremap <C-Right> :sbprevious<CR>
-
-" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-" Map C-l to right arrow keys in insert mode
-" TODO: use non recursive variant
-inoremap <C-l> <right>
-
-" ExTest.vim mappings
-nnoremap <Leader>et :call RunCurrentTestFile()<CR>
-nnoremap <Leader>es :call RunNearestTest()<CR>
-nnoremap <Leader>el :call RunLastTest()<CR>
-nnoremap <Leader>eta :call RunAllTests()<CR>
-
-let g:ale_lint_on_text_changed = 'never'
-
-" Quickly edit and save vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-
-" Move between linting errors
-nnoremap <Leader>ln :ALENextWrap<CR>
-nnoremap <Leader>lp :ALEPreviousWrap<CR>
-nnoremap <leader>fix :ALEFix<CR>
-
-" }}}2
-" Section: Mappings {{{3
-" ----------------------
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
