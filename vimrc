@@ -24,7 +24,7 @@ if has('patch-7.4.338')
   set breakindent
   set breakindentopt=sbr
 endif
-set clipboard=unnamed " Use the default OS clipboard 
+set clipboard=unnamed " Use the default OS clipboard
 set cmdheight=2 " Screen lines used for command line
 set colorcolumn=+1
  " Fill the buffer with keywords in
@@ -94,8 +94,27 @@ nnoremap <Leader>ln :ALENextWrap<CR>
 nnoremap <Leader>lp :ALEPreviousWrap<CR>
 nnoremap <leader>lf :ALEFix<CR>
 
-let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
-let g:ale_linters = {'javascript': ['eslint']}
+autocmd FileType html.handlebars let g:ale_javascript_prettier_options = '--parser=glimmer'
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
+\   'scss': ['prettier'],
+\   'html': ['prettier'],
+\   'html.handlebars': ['prettier'],
+\   'markdown': ['prettier'],
+\}
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'css': ['stylelint'],
+\   'scss': ['stylelint'],
+\   'html': [''],
+\   'html.handlebars': ['ember-template-lint'],
+\}
+
+let g:ale_sign_error = '🍄'
+let g:ale_sign_warning = '🙀'
 
 " ----------------------------------------------------------------------------
 " editorconfig-vim
@@ -155,7 +174,7 @@ autocmd FileType javascript UltiSnipsAddFiletypes javascript-ember
 " vim-airline
 " ----------------------------------------------------------------------------
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:airline#extensions#ale#enabled = 1
 
 " ----------------------------------------------------------------------------
 " vim-easy-align
@@ -271,7 +290,7 @@ endif
 "
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
-command -nargs=0 -bar Update if &modified 
+command -nargs=0 -bar Update if &modified
                            \|    if empty(bufname('%'))
                            \|        browse confirm write
                            \|    else
