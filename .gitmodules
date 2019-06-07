@@ -103,9 +103,6 @@
 [submodule "vim/pack/common/start/gv.vim"]
 	path = vim/pack/common/start/gv.vim
 	url = https://github.com/junegunn/gv.vim
-[submodule "vim/pack/common/start/vim-emoji"]
-	path = vim/pack/common/start/vim-emoji
-	url = https://github.com/junegunn/vim-emoji
 [submodule "vim/pack/common/start/undotree"]
 	path = vim/pack/common/start/undotree
 	url = https://github.com/mbbill/undotree

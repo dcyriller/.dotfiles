@@ -185,6 +185,13 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " ----------------------------------------------------------------------------
+" vim-gitgutter
+" ----------------------------------------------------------------------------
+let g:gitgutter_sign_added = '🔹'
+let g:gitgutter_sign_modified = '🔸'
+let g:gitgutter_sign_removed = '🔺'
+
+" ----------------------------------------------------------------------------
 " vim-test
 " ----------------------------------------------------------------------------
 nnoremap <Leader>tn :TestNearest<CR>
@@ -192,15 +199,6 @@ nnoremap <Leader>tf :TestFile<CR>
 nnoremap <Leader>ts :TestSuite<CR>
 nnoremap <Leader>tl :TestLast<CR>
 nnoremap <Leader>tv :TestVisit<CR>
-
-" let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
-
-" let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
-" let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
-" let g:gitgutter_sign_modified_removed = emoji#for('collision')
-" call emoji#for('small_blue_diamond')
-
-" set completefunc=emoji#complete
 
 " let g:UltiSnipsExpandTrigger="<tab>"
 " let g:UltiSnipsJumpForwardTrigger="<c-b>"
