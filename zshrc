@@ -31,11 +31,6 @@ export PATH
 # Load aliases from a file shared by zsh and bash
 [ -f ~/.aliases ] && source ~/.aliases
 
-# load custom executable functions
-for function in ~/.zsh/functions/*; do
-  source $function
-done
-
 # Load NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -44,7 +39,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "pyenv" ] && eval "$(pyenv init -)"
 [ -s "rbenv" ] && eval "$(rbenv init -)"
 
-# Load FZF
+# Load FZF autocompletion and bindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Load autojump
@@ -58,3 +53,8 @@ export NVM_DIR="$HOME/.nvm"
 if [ -f ~/.config/exercism/exercism_completion.zsh  ]; then
     . ~/.config/exercism/exercism_completion.zsh
 fi
+
+# load custom executable functions
+for function in ~/.zsh/functions/*; do
+  source $function
+done

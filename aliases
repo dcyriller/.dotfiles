@@ -7,3 +7,5 @@ alias grc='vim $(git diff --name-only | uniq)'
 alias h="fzf --preview 'bat --color \"always\" {}'"
 
 alias g=git
+
+alias gv='vim +GV +"autocmd BufWipeout <buffer> qall"'

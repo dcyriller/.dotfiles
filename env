@@ -7,6 +7,9 @@ export LESS=' -R '
 export PYENV_ROOT="$HOME/.pyenv"
 
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND='fd --type f --type d --hidden --follow --exclude .git'
 export FZF_TMUX=1
 
 source ~/.env.local
