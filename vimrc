@@ -212,16 +212,6 @@ set runtimepath+=/usr/local/opt/fzf " add fzf support
 " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 " set omnifunc=syntaxcomplete#Complete
 
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  if !exists(':Ag')
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-  endif
-endif
-
 " Enable solarized colorscheme
 " let g:solarized_termcolors=256
 " let g:solarized_termtrans=1
