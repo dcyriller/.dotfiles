@@ -205,16 +205,6 @@ nnoremap \ :GFiles<ENTER>
 
 set runtimepath+=/usr/local/opt/fzf " add fzf support
 
-" Enabable omnifunction
-" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
-" set omnifunc=syntaxcomplete#Complete
-
-" Enable solarized colorscheme
-" let g:solarized_termcolors=256
-" let g:solarized_termtrans=1
-" set background=dark
-" colorscheme solarized
-
 " Enable seoul256 colorscheme
 syntax enable
 let g:seoul256_background = 233
