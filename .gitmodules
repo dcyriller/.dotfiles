@@ -160,12 +160,3 @@
 [submodule "vim/pack/common/start/vim-tmux-navigator"]
 	path = vim/pack/common/start/vim-tmux-navigator
 	url = git@github.com:christoomey/vim-tmux-navigator.git
-[submodule "vim/pack/common/start/deoplete.nvim"]
-	path = vim/pack/common/start/deoplete.nvim
-	url = git@github.com:Shougo/deoplete.nvim.git
-[submodule "vim/pack/common/start/nvim-yarp"]
-	path = vim/pack/common/start/nvim-yarp
-	url = https://github.com/roxma/nvim-yarp
-[submodule "vim/pack/common/start/vim-hug-neovim-rpc"]
-	path = vim/pack/common/start/vim-hug-neovim-rpc
-	url = https://github.com/roxma/vim-hug-neovim-rpc

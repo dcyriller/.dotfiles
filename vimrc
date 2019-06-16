@@ -116,8 +116,6 @@ let g:ale_linters = {
 let g:ale_sign_error = '🍄'
 let g:ale_sign_warning = '🙀'
 
-let g:deoplete#enable_at_startup = 1
-
 " ----------------------------------------------------------------------------
 " editorconfig-vim
 " ----------------------------------------------------------------------------
