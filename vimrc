@@ -162,15 +162,6 @@ let g:javascript_plugin_jsdoc = 1
 " augroup END
 
 " ----------------------------------------------------------------------------
-" UltiSnips
-" ----------------------------------------------------------------------------
-" Let :UltiSnipsEdit split the window.
-let g:UltiSnipsEditSplit='vertical'
-
-autocmd FileType javascript UltiSnipsAddFiletypes javascript-jsdoc
-autocmd FileType javascript UltiSnipsAddFiletypes javascript-ember
-
-" ----------------------------------------------------------------------------
 " vim-airline
 " ----------------------------------------------------------------------------
 let g:airline#extensions#tabline#enabled = 1
@@ -199,10 +190,6 @@ nnoremap <Leader>tf :TestFile<CR>
 nnoremap <Leader>ts :TestSuite<CR>
 nnoremap <Leader>tl :TestLast<CR>
 nnoremap <Leader>tv :TestVisit<CR>
-
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 nnoremap \ :GFiles<ENTER>
 
