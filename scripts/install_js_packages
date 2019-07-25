@@ -1,3 +1,0 @@
-#!/bin/sh
-
-yarn global add browser-sync ember-cli eslint eslint-plugin-ember-suave jasmine-node stylelint stylelint-config-standard babel-eslint typescript tslint
