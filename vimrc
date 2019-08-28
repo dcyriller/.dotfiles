@@ -123,6 +123,27 @@ let g:ale_sign_warning = '🙀'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " ----------------------------------------------------------------------------
+" FZF
+" ----------------------------------------------------------------------------
+
+set runtimepath+=/usr/local/opt/fzf " add fzf support
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" ----------------------------------------------------------------------------
 " nerdtree
 " ----------------------------------------------------------------------------
 " Close vim if NERDtree is the last opened window
@@ -202,8 +223,6 @@ nnoremap <Leader>tl :TestLast<CR>
 nnoremap <Leader>tv :TestVisit<CR>
 
 nnoremap \ :GFiles<ENTER>
-
-set runtimepath+=/usr/local/opt/fzf " add fzf support
 
 " Enable seoul256 colorscheme
 syntax enable
