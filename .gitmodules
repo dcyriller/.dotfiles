@@ -40,9 +40,6 @@
 [submodule "vim/pack/common/start/swift.vim"]
 	path = vim/pack/common/start/swift.vim
 	url = https://github.com/keith/swift.vim.git
-[submodule "vim/pack/common/start/typescript-vim"]
-	path = vim/pack/common/start/typescript-vim
-	url = https://github.com/leafgarland/typescript-vim.git
 [submodule "vim/pack/common/start/vader.vim"]
 	path = vim/pack/common/start/vader.vim
 	url = https://github.com/junegunn/vader.vim.git
@@ -136,3 +133,6 @@
 [submodule "vim/pack/common/start/VimCompletesMe"]
 	path = vim/pack/common/start/VimCompletesMe
 	url = https://github.com/ajh17/VimCompletesMe
+[submodule "vim/pack/common/start/typescript-vim"]
+	path = vim/pack/common/start/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
