@@ -98,9 +98,9 @@ autocmd FileType html.handlebars let g:ale_javascript_prettier_options = '--pars
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['prettier'],
-\   'css': ['prettier'],
-\   'scss': ['prettier'],
+\   'javascript': ['eslint'],
+\   'css': ['stylelint'],
+\   'scss': ['stylelint'],
 \   'html': ['prettier'],
 \   'html.handlebars': ['prettier'],
 \   'markdown': ['prettier'],
