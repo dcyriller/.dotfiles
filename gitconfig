@@ -44,6 +44,7 @@
 	tool = vim
 [user]
 	name = Cyrille David
+	signingkey = E8A97BFA09ADCEC88EB4CDEEBBB708ED5F8F2877
 [pager]
 	diff = diff-so-fancy | less --tabs=1,5 -RFX
 	show = diff-so-fancy | less --tabs=1,5 -RFX
@@ -53,3 +54,5 @@
 	enabled = true
 [include]
 	path = .gitconfig.local
+[commit]
+	gpgsign = true
