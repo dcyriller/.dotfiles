@@ -28,4 +28,4 @@ These scripts should be sourced in PATH if RCM step was successfull.
 
 # Setup git
 
-Create a `.gitconfig.local` and set your email.
+Create a `.gitconfig.local`, set your email and signingkey there.
