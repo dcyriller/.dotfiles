@@ -38,15 +38,10 @@
 	grep = auto
 [github]
 	user = dcyriller
-[init]
-	templatedir = ~/.git_template
 [merge]
 	tool = vim
 [user]
 	name = Cyrille David
-[pager]
-	diff = diff-so-fancy | less --tabs=1,5 -RFX
-	show = diff-so-fancy | less --tabs=1,5 -RFX
 [fetch]
 	prune = true
 [rerere]
