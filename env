@@ -13,4 +13,4 @@ export FZF_TMUX=1
 GPG_TTY=$(tty)
 export GPG_TTY
 
-source ~/.env.local
+[ -f ~/.env.local ] && source ~/.env.local
